@@ -1,0 +1,1639 @@
+a {
+    text-decoration: none!important;
+  
+}
+
+
+#button {
+    color: #809270;
+    background-color: white;
+    /*border: #809270 solid 2px;*/
+    border-radius: 20px;
+    padding: 15px;
+    margin: 10px;
+    cursor: pointer;
+}
+@media (max-width: 480px) {
+    #button {
+        margin: 5px;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ================= ХЕДЕР ================= */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Левая: логотип + телефон */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.header-logo .logo_img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-phone {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.header-phone:hover {
+    color: #809270;
+}
+
+.phone-icon {
+    font-size: 18px;
+}
+
+/* Гамбургер */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.burger-btn span {
+    width: 25px;
+    height: 3px;
+    background: #1f2937;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Навигация */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 0 20px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.a_nav {
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.a_nav:hover {
+    color: #809270;
+}
+/* Гамбургер */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1002; /* 🔑 Выше хедера (1000) и меню (999) */
+    pointer-events: auto; /* 🔑 Гарантируем, что кнопка кликабельна */
+}
+
+.burger-btn span {
+    width: 25px;
+    height: 3px;
+    background: #1f2937;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Адаптив: показываем бургер на мобильных */
+@media (max-width: 768px) {
+    .burger-btn { 
+        display: flex; 
+    }
+    
+    .header-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 1001; /* 🔑 Ниже бургера, но выше контента */
+    }
+    
+    .header-nav.active { 
+        transform: translateY(0); 
+    }
+    
+    /* Анимация иконки бургера */
+    .burger-btn.active span:nth-child(1) { 
+        transform: rotate(45deg) translate(5px, 5px); 
+    }
+    .burger-btn.active span:nth-child(2) { 
+        opacity: 0; 
+    }
+    .burger-btn.active span:nth-child(3) { 
+        transform: rotate(-45deg) translate(5px, -5px); 
+    }
+}
+/* Авторизация */
+.header-auth {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.a_register {
+    color: #809270;
+    background: #fff;
+    border: 2px solid #809270;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.a_register:hover {
+    background: #809270;
+    color: #fff;
+}
+
+.cart-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cart-count {
+    background: #809270;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Адаптив хедера */
+@media (max-width: 1200px) {
+    .nav-list { gap: 0 15px; }
+    .a_nav { font-size: 14px; }
+}
+
+@media (max-width: 992px) {
+    .header-container { padding: 0 15px; }
+    .header-phone .phone-number { display: none; }
+    .header-phone { gap: 3px; }
+    .nav-list { gap: 0 12px; }
+    .a_nav { font-size: 13px; }
+}
+
+@media (max-width: 768px) {
+    .burger-btn { display: flex; }
+
+    .header-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+
+    .header-nav.active { transform: translateY(0); }
+
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px 0;
+    }
+
+    .a_nav {
+        font-size: 16px;
+        padding: 8px 0;
+        display: block;
+    }
+
+    .header-auth {
+        width: 100%;
+        justify-content: center;
+        padding-top: 15px;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .a_register {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .burger-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .burger-btn.active span:nth-child(2) { opacity: 0; }
+    .burger-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+}
+
+@media (max-width: 480px) {
+    .header-left { gap: 10px; }
+    .header-logo .logo_img { height: 45px; }
+    .header-phone .phone-icon { font-size: 16px; }
+    .header-nav { top: 65px; padding: 15px; }
+    .a_nav { font-size: 15px; }
+}
+/*форма авторизации*/
+/* ================= ФОРМА АВТОРИЗАЦИИ ================= */
+/* ================= БАЗОВЫЕ НАСТРОЙКИ ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    /* 🔑 Убран background-color — фон прозрачный */
+    background: transparent;
+    width: 100%;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ================= ФОРМА АВТОРИЗАЦИИ ================= */
+
+/* ================= ФОРМА АВТОРИЗАЦИИ ================= */
+
+/* Обертка */
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    padding: 100px 20px 40px;
+    background: transparent;
+}
+
+/* 🔑 Карточка формы — ИСПРАВЛЕНО: специфичный селектор + точная ширина */
+.body .container {
+    background-color: #F0F0F0;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 650px !important; /* 🔑 Принудительно 650px для формы */
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Заголовок */
+.h2 {
+    color: #809270;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+/* Группы полей */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #809270;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: left;
+}
+
+/* Поля ввода */
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 13px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #1f2937;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #809270;
+    box-shadow: 0 0 0 3px rgba(128, 146, 112, 0.15);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+/* Чекбокс */
+.checkbox {
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+    gap: 8px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #809270;
+    cursor: pointer;
+    margin: 0;
+}
+
+.left {
+    margin: 0;
+}
+
+.left label {
+    font-size: 14px;
+    color: #4b5563;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Кнопка отправки */
+.logButton {
+    
+    width: 100%;
+    padding: 13px 20px;
+    background-color: #fff;
+    color: #809270;
+    border: 2px solid #809270;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.logButton:hover {
+    background-color: #809270;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(128, 146, 112, 0.3);
+}
+
+/* Блок регистрации */
+.text {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.system {
+    color: #809270;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.system:hover {
+    color: #6b7a5d;
+    text-decoration: underline;
+}
+
+/* Ошибки валидации */
+.error-message {
+    min-height: 16px;
+    font-size: 12px;
+    color: #dc2626;
+    margin-top: 4px;
+    display: block;
+    text-align: left;
+}
+
+.error {
+    border-color: #dc2626 !important;
+    background-color: #fef2f2 !important;
+}
+
+/* ================= АДАПТИВНОСТЬ ================= */
+
+/* Планшеты (до 768px) */
+@media (max-width: 768px) {
+    .body {
+        padding: 90px 15px 30px;
+    }
+
+    .body .container {
+        padding: 35px 25px;
+        max-width: 100% !important; /* На планшетах — на всю ширину */
+    }
+
+    .h2 {
+        font-size: 26px;
+    }
+}
+
+/* Телефоны (до 480px) */
+@media (max-width: 480px) {
+    .body {
+        padding: 85px 10px 25px;
+    }
+
+    .body .container {
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+
+    .h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+
+    .checkbox {
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    .checkbox input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
+
+    .left label {
+        font-size: 13px;
+    }
+
+    .logButton {
+        padding: 12px 18px;
+        font-size: 15px;
+        border-radius: 18px;
+    }
+
+    .text {
+        font-size: 13px;
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+    .body {
+        padding: 80px 8px 20px;
+    }
+
+    .body .container {
+        padding: 25px 15px;
+    }
+
+    .h2 {
+        font-size: 22px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    .logButton {
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+}
+/*регистрация*/
+/* ================= ФОРМА РЕГИСТРАЦИИ ================= */
+
+/* 1. Стили для контейнера формы (уже есть, но убедись, что они активны) */
+.body .container {
+    background-color: #F0F0F0;
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 650px !important;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* 2. Заголовок */
+.h2 {
+    color: #809270;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+/* 3. Группы полей */
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #809270;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* 4. Поля ввода (включая новые: Email, Phone) */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #1f2937;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Эффект при клике на поле */
+.form-group input:focus {
+    border-color: #809270;
+    box-shadow: 0 0 0 3px rgba(128, 146, 112, 0.15);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+/* 5. Ошибки валидации */
+.error-message {
+    min-height: 15px;
+    font-size: 12px;
+    color: #dc2626;
+    margin-top: 4px;
+    display: block;
+}
+
+/* 6. Чекбокс "Согласен с правилами" */
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #809270;
+    cursor: pointer;
+    margin: 0;
+}
+
+.left label {
+    font-size: 13px;
+    color: #4b5563;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+/* 7. Кнопка "Отправить" (#btn) */
+#btn {
+    width: 100%;
+    padding: 13px 20px;
+    background-color: #fff;
+    color: #809270;
+    border: 2px solid #809270;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    /* Стиль для неактивной кнопки (disabled) */
+    opacity: 1;
+}
+
+#btn:hover:not(:disabled) {
+    background-color: #809270;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(128, 146, 112, 0.3);
+}
+
+/* Состояние, когда кнопка заблокирована (disabled) */
+#btn:disabled {
+    background-color: #f0f0f0;
+    color: #a3a3a3;
+    border-color: #d4d4d4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 8. Нижний текст и ссылки */
+.text {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.text a {
+    color: #809270;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.text a:hover {
+    text-decoration: underline;
+}
+
+/* 9. Адаптивность (Мобильные устройства) */
+@media (max-width: 480px) {
+    .body .container {
+        padding: 25px 15px;
+        border-radius: 16px;
+    }
+
+    .h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .form-group input {
+        padding: 11px 14px;
+        font-size: 15px;
+    }
+
+    #btn {
+        padding: 12px 18px;
+        font-size: 15px;
+    }
+}
+/* ================= ФУТЕР ================= */
+.site-footer {
+    background: #809270;
+    color: #fff;
+    padding: 40px 20px 20px;
+    margin-top: 60px;
+    font-family: system-ui, -apple-system, sans-serif;
+    /* 🔑 Убран border-radius — футер с прямыми углами */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 🔑 Логотип по центру */
+    gap: 12px;
+    text-align: center;
+}
+
+.footer-logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-slogan {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.footer-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 15px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #DAEBC0;
+    border-radius: 1px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center; /* 🔑 Ссылки по центру */
+    text-align: center;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    justify-content: center;
+}
+
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.contact-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.footer-contact-list a {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.2s;
+}
+
+.footer-contact-list a:hover {
+    color: #DAEBC0;
+}
+
+.footer-social {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.social-link img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.social-link:hover {
+    background: #DAEBC0;
+    transform: translateY(-3px);
+}
+
+.social-link:hover img {
+    filter: none;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    opacity: 0.85;
+    margin: 0;
+}
+
+.footer-policy {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    transition: color 0.2s;
+}
+
+.footer-policy:hover {
+    color: #DAEBC0;
+}
+
+/* Адаптив футера */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 30px 15px 15px;
+        margin-top: 40px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo {
+        height: 80px;
+    }
+
+    .footer-title {
+        font-size: 15px;
+    }
+
+    .footer-links a,
+    .footer-contact-list li,
+    .footer-copyright,
+    .footer-policy {
+        font-size: 13px;
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Плавная прокрутка */
+html {
+    scroll-behavior: smooth;
+}
+/* формы лк*/
+/* форма вопросов */
+/* ================= ФОРМА "ВОПРОС" — ОБНОВЛЕННЫЕ СТИЛИ ================= */
+
+/* Поле ввода вопроса */
+#ask {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 14px;
+    background-color: #fff;
+    color: #1f2937;
+    font-size: 16px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    margin-bottom: 12px; /* Уменьшенный отступ снизу до кнопок */
+}
+
+#ask:focus {
+    outline: none;
+    border-color: #809270;
+    box-shadow: 0 0 0 4px rgba(128, 146, 112, 0.15), 0 4px 12px rgba(128, 146, 112, 0.1);
+}
+
+#ask::placeholder {
+    color: #9ca3af;
+    font-size: 15px;
+}
+
+/* Контейнеры кнопок */
+.button,
+.button_cancellation {
+    margin-top: 0; /* Убираем лишний отступ сверху */
+    width: 100%;
+    display: block;
+}
+
+/* Общие стили кнопок — идентичны полю ввода по размеру */
+.button input[type="submit"],
+#btn-cancel-ask {
+    width: 100%; /* Одинаковая длина с полем */
+    padding: 14px 18px; /* Одинаковые внутренние отступы как у input */
+    border-radius: 14px; /* Одинаковое скругление */
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* Кнопка "Отправить" */
+.button input[type="submit"] {
+    background: linear-gradient(135deg, #809270 0%, #6b7a5d 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(128, 146, 112, 0.35);
+    margin-bottom: 10px; /* Небольшой отступ между кнопками */
+}
+
+.button input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 22px rgba(128, 146, 112, 0.45);
+}
+
+/* Кнопка "Отменить" */
+#btn-cancel-ask {
+    background: #fff;
+    color: #809270;
+    border: 2px solid #809270;
+}
+
+#btn-cancel-ask:hover {
+    background: #f0f4f0;
+    border-color: #6b7a5d;
+    color: #6b7a5d;
+    transform: translateY(-3px);
+}
+
+/* Адаптив (мобильные устройства) */
+@media (max-width: 480px) {
+    #ask, .button input[type="submit"], #btn-cancel-ask {
+        font-size: 15px;
+        padding: 13px 16px;
+    }
+}
+/* отзывы */
+/* ================= ФОРМА "НАПИСАТЬ ОТЗЫВ" ================= */
+
+/* Звёзды рейтинга */
+/* Звёзды рейтинга (без анимации) */
+.rating-stars {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+    margin-top: 8px;
+    padding: 5px 0;
+}
+
+.rating-stars .star {
+    font-size: 32px;
+    color: #e5e7eb;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+}
+
+/* Цвет при наведении и активной звезде — без перехода */
+.rating-stars .star:hover,
+.rating-stars .star.active {
+    color: #809270;
+}
+
+/* Адаптив для звёзд */
+@media (max-width: 768px) {
+    .rating-stars .star {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .rating-stars {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .rating-stars .star {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 360px) {
+    .rating-stars .star {
+        font-size: 24px;
+    }
+}
+
+/* Текстовое поле (textarea) */
+#text {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 14px;
+    background-color: #fff;
+    color: #1f2937;
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 1.6;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    resize: vertical;
+    min-height: 120px;
+    max-height: 300px;
+}
+
+#text:focus {
+    outline: none;
+    border-color: #809270;
+    box-shadow: 0 0 0 4px rgba(128, 146, 112, 0.15), 0 4px 12px rgba(128, 146, 112, 0.1);
+}
+
+#text::placeholder {
+    color: #9ca3af;
+    font-size: 15px;
+}
+
+/* Поле загрузки файла */
+#photo {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    color: #4b5563;
+    cursor: pointer;
+    background: #fff;
+    border: 2px dashed #DAEBC0;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+#photo:hover {
+    border-color: #809270;
+    background: #f9fafb;
+}
+
+#photo::-webkit-file-upload-button {
+    background: linear-gradient(135deg, #809270 0%, #6b7a5d 100%);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(128, 146, 112, 0.2);
+}
+
+#photo::-webkit-file-upload-button:hover {
+    background: linear-gradient(135deg, #6b7a5d 0%, #809270 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(128, 146, 112, 0.3);
+}
+
+/* Подсказка под полем */
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+/* Предпросмотр фото */
+#preview-container {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 2px dashed #DAEBC0;
+    text-align: center;
+}
+
+#preview-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: #809270;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#photo-preview {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid #809270;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+#photo-preview:hover {
+    transform: scale(1.02);
+}
+
+/* Контейнеры кнопок */
+.button,
+.button_cancellation {
+    margin-top: 0;
+    width: 100%;
+    display: block;
+}
+
+/* Общие стили кнопок */
+.button button[type="submit"],
+#btn-cancel-review {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* Кнопка "Отправить" */
+.button button[type="submit"] {
+    background: linear-gradient(135deg, #809270 0%, #6b7a5d 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(128, 146, 112, 0.35);
+    margin-bottom: 10px;
+}
+
+.button button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 22px rgba(128, 146, 112, 0.45);
+}
+
+.button button[type="submit"]:active {
+    transform: translateY(-1px);
+}
+
+/* Кнопка "Отменить" */
+#btn-cancel-review {
+    background: #fff;
+    color: #809270;
+    border: 2px solid #809270;
+}
+
+#btn-cancel-review:hover {
+    background: #f0f4f0;
+    border-color: #6b7a5d;
+    color: #6b7a5d;
+    transform: translateY(-3px);
+}
+
+#btn-cancel-review:active {
+    transform: translateY(-1px);
+}
+
+/* Сообщения об ошибках (Laravel validation) */
+.alert.alert-danger {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.alert.alert-danger p {
+    color: #b91c1c;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+/* ================= АДАПТИВНОСТЬ ================= */
+
+/* Планшеты (до 768px) */
+@media (max-width: 768px) {
+
+
+    #text {
+        padding: 13px 16px;
+        font-size: 15px;
+        min-height: 100px;
+    }
+
+    #photo {
+        padding: 10px 0;
+        font-size: 13px;
+    }
+
+    #photo::-webkit-file-upload-button {
+        padding: 9px 16px;
+        font-size: 13px;
+    }
+
+    .button button[type="submit"],
+    #btn-cancel-review {
+        padding: 13px 16px;
+        font-size: 15px;
+    }
+}
+
+/* Телефоны (до 480px) */
+@media (max-width: 480px) {
+
+
+    .rating-stars .star {
+        font-size: 26px;
+    }
+
+    #text {
+        padding: 12px 15px;
+        font-size: 15px;
+        min-height: 90px;
+        border-radius: 12px;
+    }
+
+    #photo {
+        font-size: 13px;
+        border-radius: 10px;
+    }
+
+    #photo::-webkit-file-upload-button {
+        padding: 8px 14px;
+        font-size: 13px;
+        border-radius: 8px;
+    }
+
+    .form-group small {
+        font-size: 11px;
+    }
+
+    #preview-container {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .button button[type="submit"],
+    #btn-cancel-review {
+        padding: 12px 16px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+
+    .h2 {
+        font-size: 24px;
+    }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+
+
+    #text {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    #photo::-webkit-file-upload-button {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
+    .button button[type="submit"],
+    #btn-cancel-review {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    .h2 {
+        font-size: 22px;
+    }
+}
+/* форма животного */
+/* ================= ФОРМА "ДОБАВИТЬ ЖИВОТНОЕ" ================= */
+
+/* Выпадающий список (select) */
+#type_id,
+#disease_id {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 14px;
+    background-color: #fff;
+    color: #1f2937;
+    font-size: 16px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23809270' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 44px;
+    cursor: pointer;
+}
+
+#type_id:focus,
+#disease_id:focus {
+    outline: none;
+    border-color: #809270;
+    box-shadow: 0 0 0 4px rgba(128, 146, 112, 0.15), 0 4px 12px rgba(128, 146, 112, 0.1);
+}
+
+/* Поля ввода: текст и число */
+#name, #price, #category_id,
+#weight,
+#age {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 14px;
+    background-color: #fff;
+    color: #1f2937;
+    font-size: 16px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+#name:focus,
+#weight:focus,
+#age:focus {
+    outline: none;
+    border-color: #809270;
+    box-shadow: 0 0 0 4px rgba(128, 146, 112, 0.15), 0 4px 12px rgba(128, 146, 112, 0.1);
+}
+
+#name::placeholder,
+#weight::placeholder,
+#age::placeholder {
+    color: #9ca3af;
+    font-size: 15px;
+}
+
+/* Поля для чисел — убираем стрелочки в Chrome/Safari */
+#weight::-webkit-outer-spin-button,
+#weight::-webkit-inner-spin-button,
+#age::-webkit-outer-spin-button,
+#age::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#weight,
+#age {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+/* Контейнеры кнопок */
+.button,
+.button_cancellation {
+    margin-top: 0;
+    width: 100%;
+    display: block;
+}
+
+/* Общие стили кнопок */
+.button input[type="submit"],
+#btn-cancel-animal {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+
+/* Кнопка "Сохранить" */
+.button input[type="submit"] {
+    background: linear-gradient(135deg, #809270 0%, #6b7a5d 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 14px rgba(128, 146, 112, 0.35);
+    margin-bottom: 10px;
+}
+
+.button input[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 22px rgba(128, 146, 112, 0.45);
+}
+
+.button input[type="submit"]:active {
+    transform: translateY(-1px);
+}
+
+/* Кнопка "Отменить" */
+#btn-cancel-animal {
+    background: #fff;
+    color: #809270;
+    border: 2px solid #809270;
+}
+
+#btn-cancel-animal:hover {
+    background: #f0f4f0;
+    border-color: #6b7a5d;
+    color: #6b7a5d;
+    transform: translateY(-3px);
+}
+
+#btn-cancel-animal:active {
+    transform: translateY(-1px);
+}
+
+/* Сообщения об ошибках */
+.alert.alert-danger {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.alert.alert-danger p {
+    color: #b91c1c;
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+/* ================= АДАПТИВНОСТЬ ================= */
+
+/* Планшеты (до 768px) */
+@media (max-width: 768px) {
+    #type_id,
+    #disease_id,
+    #name,
+    #weight,
+    #age {
+        padding: 13px 16px;
+        font-size: 15px;
+    }
+
+    .button input[type="submit"],
+    #btn-cancel-animal {
+        padding: 13px 16px;
+        font-size: 15px;
+    }
+}
+
+/* Телефоны (до 480px) */
+@media (max-width: 480px) {
+    #type_id,
+    #disease_id,
+    #name,
+    #weight,
+    #age {
+        padding: 12px 15px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+
+    #type_id,
+    #disease_id {
+        background-position: right 10px center;
+        background-size: 18px;
+        padding-right: 40px;
+    }
+
+    .button input[type="submit"],
+    #btn-cancel-animal {
+        padding: 12px 16px;
+        font-size: 15px;
+        border-radius: 12px;
+    }
+
+    .h2 {
+        font-size: 24px;
+    }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (max-width: 360px) {
+    #type_id,
+    #disease_id,
+    #name,
+    #weight,
+    #age {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    .button input[type="submit"],
+    #btn-cancel-animal {
+        padding: 11px 14px;
+        font-size: 14px;
+    }
+
+    .h2 {
+        font-size: 22px;
+    }
+}
